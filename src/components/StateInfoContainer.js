@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Detail from './Detail';
 import axios from 'axios';
 
-export default class Header extends Component {
+export default class StateInfoContainer extends Component {
   constructor() {
     super();
     this.state = {
@@ -21,31 +21,19 @@ export default class Header extends Component {
   render() {
     const info = this.state.results.map((state) => {
       return (
-        <tr>
-          <td>
-            <Detail name={state.state} />
-          </td>
-          <td>
-            <Detail
-              name={state.totalTestResults ? state.totalTestResults : 0}
-            />
-          </td>
-          <td>
-            <Detail name={state.positive ? state.positive : 0} />
-          </td>
-          <td>
-            <Detail name={state.recovered ? state.recovered : 0} />
-          </td>
-          <td>
-            <Detail name={state.hospitalized ? state.hospitalized : 0} />
-          </td>
-          <td>
-            <Detail name={state.death ? state.death : 0} />
-          </td>
-          <td>
-            <Detail name={state.lastUpdateEt ? state.lastUpdateEt : 0} />
-          </td>
-        </tr>
+        <tbody>
+          <Detail
+            name={state.state}
+            totalTestResults={
+              state.totalTestResults ? state.totalTestResults : 0
+            }
+            positive={state.positive ? state.positive : 0}
+            recovered={state.recovered ? state.recovered : 0}
+            hospitalized={state.hospitalized ? state.hospitalized : 0}
+            death={state.death ? state.death : 0}
+            lastUpdateEt={state.lastUpdateEt ? state.lastUpdateEt : 0}
+          />
+        </tbody>
       );
     });
     return (
@@ -61,7 +49,7 @@ export default class Header extends Component {
             <th>Last Update</th>
           </tr>
         </thead>
-        <tbody>{info}</tbody>
+        {info}
       </table>
     );
   }
