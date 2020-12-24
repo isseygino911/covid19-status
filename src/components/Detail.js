@@ -3,16 +3,18 @@ import '../App.css';
 
 export default class Detail extends Component {
   render() {
+    const {name,totalTestResults,positive,recovered,hospitalized,death,lastUpdateEt} = this.props
     return (
-      <tr>
-        <td>{this.props.name}</td>
-        <td>{this.props.totalTestResults}</td>
-        <td>{this.props.positive}</td>
-        <td>{this.props.recovered}</td>
-        <td>{this.props.hospitalized}</td>
-        <td>{this.props.death}</td>
-        <td>{this.props.lastUpdateEt}</td>
-      </tr>
+        <tr>
+            <td>{name}</td>
+            <td>{totalTestResults}</td>
+            <td>{positive}</td>
+            <td>{recovered}</td>
+            <td>{hospitalized}</td>
+            <td>{death}</td>
+            <td>{lastUpdateEt}</td>
+        </tr>
+      
     );
   }
 }
